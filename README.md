@@ -1,4 +1,4 @@
-# A bullet-proof, Sass font-face mixin
+# A bullet-proof Sass font-face mixin
 
 A Sass mixin to take the pain out of creating bullet-proof `@font-face` declarations. With added `@extend` goodness.
 
