@@ -112,3 +112,7 @@ body {
 **Notice the addition of the `body` selector with the `.ptsans` selector.**
 
 There we have it, no more repeating `font-family`'s and forgetting to add the important `font-weight: normal` to all your selectors.
+
+
+###### References
+http://www.fontspring.com/blog/the-new-bulletproof-font-face-syntax/
