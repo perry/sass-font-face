@@ -1,6 +1,4 @@
-# A bullet-proof, sass font-face mixin
-
-`@mixin font-face($family, $file, $set: $family, $typeface: 'sans-serif')
+@mixin font-face($family, $file, $set: $family, $typeface: 'sans-serif')
   @font-face
     font-family: "#{$family}"
     $filepath: "../fonts/" + $set + "/" + $file
@@ -10,4 +8,3 @@
     font:
       family: "#{$family}", #{$typeface}
       weight: normal
-`
