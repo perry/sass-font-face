@@ -1,10 +1,10 @@
-@mixin font-face($family, $file, $set: $family, $typeface: 'sans-serif')
+@mixin font-face($style-name, $file, $family, $category)
   @font-face
-    font-family: "#{$family}"
-    $filepath: "../fonts/" + $set + "/" + $file
-    src: url($filepath + ".eot?#iefix") format('embedded-opentype'), url($filepath + ".woff") format('woff'), url($filepath + ".ttf")  format('truetype'), url($filepath + ".svg#" + $family + "") format('svg')
+    font-family: "#{$style-name}"
+    $filepath: "../fonts/" + $family + "/" + $file
+    src: url($filepath + ".eot?#iefix") format('embedded-opentype'), url($filepath + ".woff") format('woff'), url($filepath + ".ttf")  format('truetype'), url($filepath + ".svg#" + $style-name + "") format('svg')
 
   .#{$family}
     font:
-      family: "#{$family}", #{$typeface}
+      family: "#{$style-name}", #{$category}
       weight: normal
