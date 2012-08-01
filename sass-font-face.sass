@@ -4,7 +4,7 @@
     $filepath: "../fonts/" + $family + "/" + $file
     src: url($filepath + ".eot?#iefix") format('embedded-opentype'), url($filepath + ".woff") format('woff'), url($filepath + ".ttf")  format('truetype'), url($filepath + ".svg#" + $style-name + "") format('svg')
 
-  .#{$family}
+  .#{$style-name}
     font:
       family: "#{$style-name}", #{$category}
       weight: normal
