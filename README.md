@@ -11,7 +11,7 @@ static
 ├── css
 │   └── main.css
 └── fonts
-│   └── set
+│   └── family
 │       ├── filename.woff
 │       ├── filename.eot
 │       ├── filename.ttf
@@ -22,16 +22,27 @@ static
 Add the mixin file below any compass imports and above any other styles.
 
 ***
+@mixin font-face($style-name, $file, $family, $category)
+  @font-face
+    font-family: "#{$style-name}"
+    $filepath: "../fonts/" + $family + "/" + $file
+    src: url($filepath + ".eot?#iefix") format('embedded-opentype'), url($filepath + ".woff") format('woff'), url($filepath + ".ttf")  format('truetype'), url($filepath + ".svg#" + $style-name + "") format('svg')
 
-`@include font-face($family, $file, $set: $family, $typeface: 'sans-serif')`
+  .#{$family}
+    font:
+      family: "#{$style-name}", #{$category}
+      weight: normal
 
-`$family`: The font family, used for the `@font-face` font-family, the extend classname and font-family.
 
-`$file`: The name of your file (all formats of this variation need to have the same file name) without its extention.
+`@include font-face($style-name, $file, $family, $category)`
 
-`$set`: The font's name (e.g. opensans, ptsans, etc) - this is used in the url path. Defaults to `$family`
+`$style-name`: The style name, used for the `@font-face` font-family, the extend classname and font-family.
 
-`$typeface`: The typeface(?) of the font, e.g. `serif`, `sans-serif` - this is used in the extend class font-family declaration as a fallback. Defaults to `sans-serif`
+`$file`: The name of your file (all formats of this style need to have the same file name) without its extention.
+
+`$family`: The font family (NOT the CSS `font-family` e.g. opensans, ptsans, arial, etc) - this is used in the url path.
+
+`$category`: The category of the font, e.g. `serif`, `sans-serif` - this is used in the extend class font-family declaration as a fallback.
 
 For each variation of font that you have, you will need to include the mixin.
 
