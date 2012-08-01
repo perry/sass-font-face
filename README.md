@@ -22,17 +22,6 @@ static
 Add the mixin file below any compass imports and above any other styles.
 
 ***
-@mixin font-face($style-name, $file, $family, $category)
-  @font-face
-    font-family: "#{$style-name}"
-    $filepath: "../fonts/" + $family + "/" + $file
-    src: url($filepath + ".eot?#iefix") format('embedded-opentype'), url($filepath + ".woff") format('woff'), url($filepath + ".ttf")  format('truetype'), url($filepath + ".svg#" + $style-name + "") format('svg')
-
-  .#{$family}
-    font:
-      family: "#{$style-name}", #{$category}
-      weight: normal
-
 
 `@include font-face($style-name, $file, $family, $category)`
 
