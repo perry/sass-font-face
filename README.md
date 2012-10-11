@@ -47,6 +47,7 @@ For each variation of font that you have, you will need to include the mixin.
 ```
 @font-face {
   font-family: "ptsans";
+  src: url("../fonts/ptsans/ptsans-webfont.eot");
   src: url("../fonts/ptsans/ptsans-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/ptsans-webfont-webfont.woff") format("woff"), url("../fonts/ptsans/ptsans-webfont.ttf") format("truetype"), url("../fonts/ptsans/ptsans-webfont.svg#ptsans") format("svg");
 }
 
@@ -57,6 +58,7 @@ For each variation of font that you have, you will need to include the mixin.
 
 @font-face {
   font-family: "ptsans-italic";
+  src: url("../fonts/ptsans/ptsans-italic-webfont.eot");
   src: url("../fonts/ptsans/ptsans-italic-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/ptsans/ptsans-italic-webfont.woff") format("woff"), url("../fonts/ptsans/ptsans-italic-webfont.ttf") format("truetype"), url("../fonts/ptsans/ptsans-italic-webfont.svg#ptsans-italic") format("svg");
 }
 
@@ -76,7 +78,7 @@ As you may have noticed, the mixin also outputs classes with properties below ea
 
 This is so we can use [Sass's `@extend` directive](http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html#extend), which keeps the compiled CSS as well as the Sass DRY.
 
-Instead of declaring the `font-family` and just as importantly the `font-weight: normal` every single time you want to use the font, you can do the following. 
+Instead of declaring the `font-family` and just as importantly the `font-weight: normal` every single time you want to use the font, you can do the following.
 
 ```
 body
@@ -92,6 +94,7 @@ which then compiles to
 ```
 @font-face {
   font-family: "ptsans";
+  src: url("../fonts/ptsans/ptsans-webfont.eot");
   src: url("../fonts/ptsans/ptsans-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/ptsans-webfont-webfont.woff") format("woff"), url("../fonts/ptsans/ptsans-webfont.ttf") format("truetype"), url("../fonts/ptsans/ptsans-webfont.svg#ptsans") format("svg");
 }
 
