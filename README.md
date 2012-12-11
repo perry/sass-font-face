@@ -5,7 +5,7 @@ A Sass mixin to take the pain out of creating bullet-proof `@font-face` declarat
 ## Usage
 ### Directory structure
 You will first need to configure the variable on line 4 of the mixin to reflect the path relative to your CSS file.
-The default will rpovide support for a directory structure like
+The default will provide support for a directory structure like
 ```
 static
 ├── css
@@ -51,7 +51,7 @@ For each variation of font that you have, you will need to include the mixin.
   src: url("../fonts/ptsans/ptsans-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/ptsans-webfont-webfont.woff") format("woff"), url("../fonts/ptsans/ptsans-webfont.ttf") format("truetype"), url("../fonts/ptsans/ptsans-webfont.svg#ptsans") format("svg");
 }
 
-.ptsans {
+%ptsans (This is a placeholder selector [SASS - Placeholder](http://sass-lang.com/docs/yardoc/Sass/Selector/Placeholder.html) {
   font-family: "ptsans", sans-serif;
   font-weight: normal;
 }
@@ -62,7 +62,7 @@ For each variation of font that you have, you will need to include the mixin.
   src: url("../fonts/ptsans/ptsans-italic-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/ptsans/ptsans-italic-webfont.woff") format("woff"), url("../fonts/ptsans/ptsans-italic-webfont.ttf") format("truetype"), url("../fonts/ptsans/ptsans-italic-webfont.svg#ptsans-italic") format("svg");
 }
 
-.ptsans-italic {
+.ptsans-italic (See above selector) {
   font-family: "ptsans-italic", sans-serif;
   font-weight: normal;
 }
@@ -74,7 +74,7 @@ Safari 5.03+, IE 6+, Firefox 3.6+, Chrome 8+, iOS 3.2+, Android 2.2+, Opera 11+
 
 ## Using Sass's `@extend` directive
 
-As you may have noticed, the mixin also outputs classes with properties below each `@font-face` declaration.
+As you may have noticed, the mixin also outputs [placeholder classes](http://sass-lang.com/docs/yardoc/Sass/Selector/Placeholder.html) with properties below each `@font-face` declaration.
 
 This is so we can use [Sass's `@extend` directive](http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html#extend), which keeps the compiled CSS as well as the Sass DRY.
 
@@ -83,7 +83,7 @@ Instead of declaring the `font-family` and just as importantly the `font-weight:
 ```
 body
   background: #fff
-  @extend .ptsans
+  @extend %ptsans
   font-size: 14px
   line-height: 1.4
 ```
@@ -98,7 +98,7 @@ which then compiles to
   src: url("../fonts/ptsans/ptsans-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/ptsans-webfont-webfont.woff") format("woff"), url("../fonts/ptsans/ptsans-webfont.ttf") format("truetype"), url("../fonts/ptsans/ptsans-webfont.svg#ptsans") format("svg");
 }
 
-.ptsans, body {
+body {
   font-family: "ptsans", sans-serif;
   font-weight: normal;
 }
@@ -112,9 +112,10 @@ body {
 }
 ```
 
-**Notice the addition of the `body` selector with the `.ptsans` selector.**
 
 There we have it, no more repeating `font-family`'s and forgetting to add the important `font-weight: normal` to all your selectors.
+
+Note that the first set of properties will include all other selectors you `@extend` not just the single one we have in this example.
 
 
 ###### References
