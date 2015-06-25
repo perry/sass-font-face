@@ -1,14 +1,37 @@
-@mixin font-face($style-name, $file, $family, $category:"")
-  $filepath: "../fonts/" + $family + "/" + $file
-  @font-face
-    font-family: "#{$style-name}"
-    src: url($filepath + ".eot")
-    src: url($filepath + ".eot?#iefix") format('embedded-opentype'), url($filepath + ".woff") format('woff'), url($filepath + ".ttf")  format('truetype'), url($filepath + ".svg#" + $style-name + "") format('svg')
+@mixin font-face($local, $style-name, $file, $family, $style, $weight, $category:"") {
+  $filepath: "../fonts/" + $family + "/" + $file;
+  @font-face {
+    font-family: "#{$style-name}";
+    src: url($filepath + $weight + ".eot");
+    src: local("#{$local}"),
+         local("#{$style-name}"),
+         url($filepath + $weight + ".eot?#iefix") format('embedded-opentype'),
+         url($filepath + $weight +".woff2") format('woff2'),
+         url($filepath + $weight +".woff") format('woff'),
+         url($filepath + $weight + ".ttf")  format('truetype'),
+         url($filepath + $weight + ".svg#" + $style-name + "") format('svg');
+    font-style: $style;
+    @if($weight == 'Light'){
+       font-weight: 300;
+    }@else if($weight == "Medium"){
+       font-weight: 500;
+    }@else if($weight == 'Regular'){
+       font-weight: 400;
+    }@else if($weight == 'Bold'){
+       font-weight: 700;
+    }@else{
+      font-weight: $weight;
+    }
+  }
 
-  %#{$style-name}
-    font:
-      @if $category != ""
-        family: "#{$style-name}", #{$category}
-      @else
-        family: "#{$style-name}"
-      weight: normal
+  %#{$style-name} {
+    font: {
+      @if $category != "" {
+        family: "#{$style-name}", #{$category};
+      }
+      @else {
+        family: "#{$style-name}";
+      }
+    }
+  }
+}
